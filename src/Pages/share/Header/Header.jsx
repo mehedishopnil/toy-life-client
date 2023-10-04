@@ -4,8 +4,8 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <div className="container mx-auto">
-      <div className="navbar bg-[#fef7e5]">
+    <div className=" bg-[#fef7e5] py-5">
+      <div className="navbar container mx-auto">
         <div className="navbar-start">
           <a className="btn btn-ghost normal-case text-3xl font-bold text-[#e73529]">
             Toy<span className="text-[#94c120]">Life</span>
@@ -15,8 +15,8 @@ const Header = () => {
           <ul className="flex gap-5">
             <li>
               <a
-                className={`text-xl hover:border-b-2 hover:border-[#94c120] hover:text-[#94c120] ${
-                  location.pathname === '/' ? 'text-[#94c120]' : 'text-[#000]' // Change text color for active and inactive states
+                className={`text-lg font-bold hover:border-b-2 hover:border-[#94c120] hover:text-[#94c120] ${
+                  location.pathname === "/" ? "text-[#94c120]" : "text-[#393f44]" // Change text color for active and inactive states
                 }`}
               >
                 <Link to="/">Home</Link>
@@ -24,18 +24,63 @@ const Header = () => {
             </li>
             <li>
               <a
-                className={`text-xl hover:border-b-2 hover:border-[#94c120] ${
-                  location.pathname === '/blog' ? 'text-[#94c120]' : 'text-[#000]' // Change text color for active and inactive states
+                className={`text-lg font-bold hover:border-b-2 hover:border-[#94c120] ${
+                  location.pathname === "/blog"
+                    ? "text-[#94c120]"
+                    : "text-[#393f44]" // Change text color for active and inactive states
                 }`}
               >
                 <Link to="/blog">Blog</Link>
               </a>
             </li>
+
+
+            <li>
+              <a
+                className={`text-lg font-bold hover:border-b-2 hover:border-[#94c120] ${
+                  location.pathname === "/all-toys"
+                    ? "text-[#94c120]"
+                    : "text-[#393f44]" // Change text color for active and inactive states
+                }`}
+              >
+                <Link to="/all-toys">All Toys</Link>
+              </a>
+            </li>
+
+
+            <li>
+              <a
+                className={`text-lg font-bold hover:border-b-2 hover:border-[#94c120] ${
+                  location.pathname === "/my-toys"
+                    ? "text-[#94c120]"
+                    : "text-[#393f44]" // Change text color for active and inactive states
+                }`}
+              >
+                <Link to="/my-toys">My Toys</Link>
+              </a>
+            </li>
+
+
+            <li>
+              <a
+                className={`text-lg font-bold hover:border-b-2 hover:border-[#94c120] ${
+                  location.pathname === "/add-a-toy"
+                    ? "text-[#94c120]"
+                    : "text-[#393f44]" // Change text color for active and inactive states
+                }`}
+              >
+                <Link to="/add-a-toy">Add a Toy</Link>
+              </a>
+            </li>
+
           </ul>
         </div>
         <div className="navbar-end flex gap-5">
           <a className="btn text">Log in</a>
           <a className="btn">SignUp</a>
+        </div>
+        <div>
+            <h1>user image</h1>
         </div>
       </div>
     </div>
