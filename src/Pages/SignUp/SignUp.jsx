@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 const SignUp = () => {
   return (
     <div>
-      <div className="hero min-h-screen bg-base-100">
+      <div className=" hero min-h-screen bg-base-200">
         <div className=" ">
           <div className="text-center pb-8 ">
             <h1 className="text-5xl font-bold">Register now!</h1>
           </div>
-          <div className="  shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 w-full max-w-md xl:w-[400px] shadow-2xl bg-base-100">
             <form className="card-body">
               <div className="form-control">
                 <label className="label">
