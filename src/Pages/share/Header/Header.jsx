@@ -8,7 +8,7 @@ const Header = () => {
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <a className="btn btn-ghost normal-case text-3xl font-bold text-[#e73529]">
-            Toy<span className="text-[#94c120]">Life</span>
+            <strong>Toy</strong><span className="text-[#94c120]">Life</span>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -76,7 +76,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end flex gap-5">
-          <a className="btn text">Log in</a>
+          <Link to='/logIn'><a className="btn text">Log in</a></Link>
           <a className="btn">SignUp</a>
         </div>
         <div>
