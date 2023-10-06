@@ -76,8 +76,8 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end flex gap-5">
-          <Link to='/logIn'><a className="btn text">Log in</a></Link>
-          <a className="btn">SignUp</a>
+          <Link to='/logIn'><a className="btn text-white bg-[#94c120] hover:bg-[#80a91a]">Log in</a></Link>
+          <a className="btn text-white bg-[#94c120] hover:bg-[#80a91a]">SignUp</a>
         </div>
         <div>
             <h1>user image</h1>
