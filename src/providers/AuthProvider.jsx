@@ -7,6 +7,31 @@ const auth = getAuth(app);
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [galleryImage, setGalleryImage] = useState([]);
+
+
+    //for Gallery Image Data
+    useEffect(()=>{
+        const galleryImageData = async () =>{
+            try{
+                const res = await fetch ('http://localhost:5000/galleryImage')
+                if(!res.ok){
+                    throw new Error('Network response was not ok');
+                }
+                const imageData = await res.json();
+                setGalleryImage(imageData);
+                setLoading(false);
+            }
+            catch {
+                error => {
+                    console.log(error);
+                    setLoading(false);
+                }
+            }
+        }
+        galleryImageData();
+    },[])
 
     
    //for log in::
@@ -29,6 +54,8 @@ const AuthProvider = ({children}) => {
 
     const authInfo = {
         user,
+        loading,
+        galleryImage,
         signIn,
         createUser  
     }
