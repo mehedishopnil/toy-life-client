@@ -60,7 +60,7 @@ const Gallery = () => {
   }, [selectedFilter]);
 
   return (
-    <section className="bg-[#fef7e5]  py-20">
+    <section className=" py-20">
       <div className="container mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-5xl pb-5 font-semibold text-gray-800">Gallery</h2>
