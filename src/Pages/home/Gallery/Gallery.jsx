@@ -1,25 +1,20 @@
-import { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import ReactPaginate from "react-paginate";
-import './Gallery.css'
-
+import "./Gallery.css";
 
 const Gallery = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [selectedImage, setSelectedImage] = useState(null);
-  const [currentPage, setCurrentPage] = useState(0); // Track the current page
+  const [currentPage, setCurrentPage] = useState(1); // Track the current page (start from page 1)
   const imagesPerPage = 12; // Number of images to display per page
   const { galleryImage } = useContext(AuthContext);
 
-  console.log(galleryImage);
-
   const allGalleryImages = galleryImage.map((imageData) => ({
-    id: imageData._id, // Assuming _id is unique and can be used as the id
+    id: imageData._id,
     src: imageData.image,
     category: imageData.category,
   }));
 
-  // Define a function to filter images based on the selected category
   const filterImages = (category) => {
     if (category === "all") {
       return allGalleryImages;
@@ -27,40 +22,42 @@ const Gallery = () => {
     return allGalleryImages.filter((image) => image.category === category);
   };
 
-  // Calculate the total number of pages
   const pageCount = Math.ceil(
     filterImages(selectedFilter).length / imagesPerPage
   );
 
-  // Function to handle page change
-  const handlePageClick = (selectedPage) => {
-    setCurrentPage(selectedPage.selected);
+  const generatePageNumbers = (totalPages) => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
   };
 
-  // Get the current page's images
+  const handlePageChanges = (page) => {
+    setCurrentPage(page);
+  };
+
   const getCurrentPageImages = () => {
-    const startIndex = currentPage * imagesPerPage;
+    const startIndex = (currentPage - 1) * imagesPerPage;
     const endIndex = startIndex + imagesPerPage;
     return filterImages(selectedFilter).slice(startIndex, endIndex);
   };
 
-  // Function to open the image in a modal
   const openImageModal = (imageSrc) => {
     setSelectedImage(imageSrc);
   };
 
-  // Function to close the modal
   const closeImageModal = () => {
     setSelectedImage(null);
   };
 
   useEffect(() => {
-    // Reset the current page when the filter changes
-    setCurrentPage(0);
+    setCurrentPage(1); // Reset the current page when the filter changes
   }, [selectedFilter]);
 
   return (
-    <section className=" py-20">
+    <section className="py-20">
       <div className="container mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-5xl pb-5 font-semibold text-gray-800">Gallery</h2>
@@ -108,8 +105,6 @@ const Gallery = () => {
             >
               Engineering
             </button>
-
-            {/* Add more filter options as needed */}
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -130,31 +125,23 @@ const Gallery = () => {
         </div>
 
         {/* Pagination */}
-        
-        {pageCount > 1 && (
-          <div className="flex justify-center mt-6">
-            <ReactPaginate
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
-              containerClassName="pagination"
-              previousLabel={<button className="pagination-button">Previous</button>}
-              nextLabel={<button className="pagination-button">Next</button>}
-              pageClassName="pagination-page"
-              previousClassName="pagination-previous"
-              nextClassName="pagination-next"
-              forcePage={currentPage} // Set the active page
-              breakLabel={'...'}
-              marginPagesDisplayed={1}
-              pageRangeDisplayed={2}
-              disableInitialCallback={true}
-              // Custom mapping function to conditionally apply a class to the active page
-              pageLinkClassName={(page) =>
-                page === currentPage ? 'pagination-link-active' : 'pagination-link'
+        <div className="pagination">
+          {generatePageNumbers(pageCount).map((page) => (
+            <button
+              key={page}
+              className="pagination-button"
+              style={
+                currentPage === page
+                  ? { backgroundColor: "#94c120", color: "#fff" }
+                  : { border: "1px solid #94c120", color: "#94c120", backgroundColor: "transparent" }
               }
-            />
-          </div>
-        )}
+              onClick={() => handlePageChanges(page)}
+            >
+              {page}
+            </button>
+          ))} 
         </div>
+      </div>
 
       {/* Modal for displaying the selected image */}
       {selectedImage && (
