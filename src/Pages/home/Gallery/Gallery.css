@@ -47,4 +47,8 @@
     background-color: #94c120;
     color: white;
   }
+
+  .pagination-link-active{
+    background-color: #94c120;
+  }
   

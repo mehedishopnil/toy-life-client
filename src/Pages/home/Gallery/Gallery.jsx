@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import ReactPaginate from "react-paginate";
 import './Gallery.css'
@@ -136,15 +136,21 @@ const Gallery = () => {
             <ReactPaginate
               pageCount={pageCount}
               onPageChange={handlePageClick}
-              containerClassName={"pagination"}
-              activeClassName={"active"}
-              previousLabel={
-                <button className="pagination-button">Previous</button>
-              }
+              containerClassName="pagination"
+              previousLabel={<button className="pagination-button">Previous</button>}
               nextLabel={<button className="pagination-button">Next</button>}
-              pageClassName={"pagination-page"}
-              previousClassName={"pagination-previous"}
-              nextClassName={"pagination-next"}
+              pageClassName="pagination-page"
+              previousClassName="pagination-previous"
+              nextClassName="pagination-next"
+              forcePage={currentPage} // Set the active page
+              breakLabel={'...'}
+              marginPagesDisplayed={1}
+              pageRangeDisplayed={2}
+              disableInitialCallback={true}
+              // Custom mapping function to conditionally apply a class to the active page
+              pageLinkClassName={(page) =>
+                page === currentPage ? 'pagination-link-active' : 'pagination-link'
+              }
             />
           </div>
         )}

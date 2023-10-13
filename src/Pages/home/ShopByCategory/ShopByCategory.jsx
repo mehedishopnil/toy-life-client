@@ -38,7 +38,7 @@ const ShopByCategory = () => {
           <div className="bg-white rounded-lg shadow-md p-4">
             <img src={product.image} alt={product.name} className="w-32 h-32 mx-auto mb-2" />
             <h2 className="text-xl font-semibold">{product.name}</h2>
-            <p className="text-gray-600">${product.price}</p>
+            <p className="text-white">${product.price}</p>
             <p className="text-yellow-400">Rating: {product.rating}</p>
             <button className="bg-primary text-white rounded-md px-4 py-2 mt-2">View Details</button>
           </div>
@@ -47,7 +47,7 @@ const ShopByCategory = () => {
 
     return (
         <div>
-            <div className=''>
+            <div className='py-8'>
             <h2 className=' text-center text-5xl font-bold'>Shop By Category</h2>
             </div>
 
