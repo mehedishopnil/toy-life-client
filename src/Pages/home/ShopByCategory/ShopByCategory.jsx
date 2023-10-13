@@ -1,25 +1,16 @@
-import  { useEffect, useState } from 'react';
+import  { useContext, useState } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import axios from 'axios';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const ShopByCategory = () => {
+  const {productsData} = useContext(AuthContext);
+  console.log(productsData);
+
     const categories = ['math', 'science', 'engineering']; // Define your categories here
     const [activeCategory, setActiveCategory] = useState(categories[0]); // Set your initial active category here
-  const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
 
-
-  useEffect(() => {
-    // Fetch toy products data from your API
-    axios.get(`/api/toyProductsData/${activeCategory}`)
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [activeCategory]);
     
       // Handle tab click
       const handleTabClick = (category) => {
@@ -30,7 +21,7 @@ const ShopByCategory = () => {
       // Pagination
       const indexOfLastProduct = currentPage * productsPerPage;
       const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-      const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+      const currentProducts = productsData.slice(indexOfFirstProduct, indexOfLastProduct);
     
       // Render products
       const renderProducts = currentProducts.map((product) => (
@@ -76,7 +67,7 @@ const ShopByCategory = () => {
 
             {/* Pagination */}
             <div className="mt-4 flex justify-center">
-              {Array.from({ length: Math.ceil(products.length / productsPerPage) }).map((_, index) => (
+              {Array.from({ length: Math.ceil(productsData.length / productsPerPage) }).map((_, index) => (
                 <button
                   key={index}
                   className={`mx-2 px-4 py-2 rounded-md ${
