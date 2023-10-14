@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
 
         <div className=" text-white">
-          <h1 className="text-white text-xl font-bold pb-5">Useful Links</h1>
+          <h1 className=" text-xl font-bold pb-5 text-gray-300 ">Useful Links</h1>
           <div className=" font-semibold text-gray-400 space-y-3">
             <p>
               <Link to="/">Home</Link>
@@ -40,8 +40,8 @@ const Footer = () => {
         </div>
 
         <div className=" text-white">
-            <h1 className="text-xl font-bold pb-5">Follow Us</h1>
-            <div className="flex gap-3">
+            <h1 className="text-xl font-bold pb-5 text-gray-300">Follow Us</h1>
+            <div className="flex gap-3 text-gray-500">
                 <a className="text-3xl" href=""><FaFacebook></FaFacebook></a>
                 <a className="text-3xl" href=""><FaInstagram></FaInstagram></a>
                 <a className="text-3xl" href=""><FaTwitter></FaTwitter></a>
@@ -49,14 +49,32 @@ const Footer = () => {
                 <a className="text-3xl" href=""><FaYoutube></FaYoutube></a>
             </div>
 
-            <h1 className="text-xl font-bold pt-8 pb-5">Payment Method</h1>
+            <h1 className="text-xl font-bold pt-8 pb-5 text-gray-300">Payment Method</h1>
 
-            <div className="flex">
-            <a className="text-4xl" href=""><FaPaypal></FaPaypal></a>
+            <div className="flex text-gray-500 space-x-3">
+            <img className="w-16 " src="https://logos-world.net/wp-content/uploads/2020/08/PayPal-Symbol.png" alt=""/>
+            
             <img className="w-1/4 -mt-5" src="https://mybrokerstar.com/images/payments/Skrill_image_2.png" alt=""/>
+
+            <img className="w-16 " src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Visa_2021.svg/2560px-Visa_2021.svg.png" alt=""/>
+
+            <img className="w-16 " src="https://i.pinimg.com/originals/a3/e2/8b/a3e28b40238a3c28b8c08be5e9b6d2f4.png" alt=""/>
             
             </div>
         </div>
+        
+      </div>
+      <div className="container mx-auto">
+        <div className="border-b border-gray-500 my-8"></div>
+
+        <div className="flex justify-between pb-5">
+            <p className="text-gray-400">©️ Copyright SK Mehedi Hasan</p>
+            <div className="text-gray-400 space-x-5">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Condition</a>
+            </div>
+        </div>
+
       </div>
     </div>
   );
