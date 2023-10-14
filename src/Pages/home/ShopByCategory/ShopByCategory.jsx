@@ -26,6 +26,7 @@ const ShopByCategory = () => {
 
   return (
     <div className="bg-[#f8ffe7]">
+      <div className="container mx-auto ">
       <div className="py-8">
         <h2 className="text-center text-5xl font-bold">Shop By Category</h2>
       </div>
@@ -94,6 +95,7 @@ const ShopByCategory = () => {
           ))}
         </Tabs>
       </div>
+    </div>
     </div>
   );
 };

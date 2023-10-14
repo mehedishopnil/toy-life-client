@@ -7,9 +7,9 @@ const Header = () => {
     <div className=" bg-[#fef7e5] py-5">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
-          <a className="btn btn-ghost normal-case text-3xl font-bold text-[#e73529]">
+          <Link to='/'><a className=" normal-case text-4xl font-bold text-[#e73529]">
             <strong>Toy</strong><span className="text-[#94c120]">Life</span>
-          </a>
+          </a></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex gap-5">
