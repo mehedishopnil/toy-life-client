@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
-import { FaBeer, FaFacebook, FaInstagram, FaLinkedin, FaPaypal, FaTwitter, FaYoutube } from 'react-icons/fa';
+import {  FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   return (
     <div className="bg-[#0d1625]">
-      <div className="container mx-auto grid grid-cols-3 py-5 ">
+      <div className="container mx-auto grid md:grid-cols-3 md:px-8 sm:px-8   py-5 ">
         <div className="">
-          <Link to="/">
-            <a className=" normal-case text-4xl font-bold text-[#e73529]">
+          <Link className="" to="/">
+            <a className=" sm:text-center normal-case text-4xl font-bold text-[#e73529]">
               <strong>Toy</strong>
               <span className="text-[#94c120]">Life</span>
             </a>
           </Link>
 
-          <p className="text-gray-300 font-light py-2 w-2/4">
+          <p className="text-gray-300 font-light  py-2 w-2/4">
             Educational toys are more than just playthings; they are powerful
             tools that ignite a child's curiosity and foster essential skills.
             Discover the magic of learning through playtime with our educational
@@ -64,7 +64,7 @@ const Footer = () => {
         </div>
         
       </div>
-      <div className="container mx-auto">
+      <div className="container mx-auto md:px-8">
         <div className="border-b border-gray-500 my-8"></div>
 
         <div className="flex justify-between pb-5">

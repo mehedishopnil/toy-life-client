@@ -5,7 +5,7 @@ const Header = () => {
 
   return (
     <div className=" bg-[#fef7e5] py-5">
-      <div className="navbar container mx-auto">
+      <div className="navbar container mx-auto md:px-8">
         <div className="navbar-start">
           <Link to='/'><a className=" normal-case text-4xl font-bold text-[#e73529]">
             <strong>Toy</strong><span className="text-[#94c120]">Life</span>
