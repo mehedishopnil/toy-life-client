@@ -9,7 +9,7 @@ const Blog = () => {
     <div className="space-y-8">
       <div className="bg-[#94c120] py-2">
         <div className="bg-[#f8ffe7]">
-        <h1 className="text-center text-4xl py-3 font-bold text-gray-700">Blog</h1>
+        <h1 className="text-center text-4xl py-3 pb-5 font-bold text-[#94c120]">Blog</h1>
         </div>
       </div>
 
