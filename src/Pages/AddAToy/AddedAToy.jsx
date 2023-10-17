@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const AddedAToy = () => {
+  const [successful, setSuccessful] = useState(false);
+
 
     const handleAddToy = event => {
         event.preventDefault();
@@ -14,7 +16,26 @@ const AddedAToy = () => {
         const description = form.description.value;
         const photoURL = form.photoURL.value;
 
-        console.log({name, category, price, rating, quantity, description, photoURL});
+        const inputedProdutInfo = {
+          name, category, price, rating, quantity, description, photoURL
+        }
+        console.log(inputedProdutInfo);
+        fetch("http://localhost:5000/usersProducts",{
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(inputedProdutInfo),
+        })
+        .then((res)=> res.json())
+        .then(data => {
+          console.log(data);
+          if(data.insertedId){
+            alert("Added Product Successfully");
+            setSuccessful(true);
+
+          }
+        })
 
 
     
