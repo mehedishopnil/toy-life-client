@@ -152,11 +152,13 @@ const AddedAToy = () => {
                 />
               </div>
 
-              {successful ? (
-                <p className="text-[#94c120] text-center">
-                  Successfully added a product
-                </p>
-              ) : null}
+              <div>
+                {successful ? (
+                  <p className="text-[#94c120] text-center">
+                    Successfully added a product
+                  </p>
+                ) : null}
+              </div>
             </form>
           </div>
         </div>
