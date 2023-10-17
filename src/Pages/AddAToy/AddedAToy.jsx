@@ -1,47 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const AddedAToy = () => {
   const [successful, setSuccessful] = useState(false);
 
+  const handleAddToy = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const category = form.category.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const quantity = form.quantity.value;
+    const description = form.description.value;
+    const photoURL = form.photoURL.value;
 
-    const handleAddToy = event => {
-        event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const category = form.category.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const quantity = form.quantity.value;
-        const description = form.description.value;
-        const photoURL = form.photoURL.value;
-
-        const inputedProdutInfo = {
-          name, category, price, rating, quantity, description, photoURL
+    const inputedProdutInfo = {
+      name,
+      category,
+      price,
+      rating,
+      quantity,
+      description,
+      photoURL,
+    };
+    console.log(inputedProdutInfo);
+    fetch("http://localhost:5000/usersProducts", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(inputedProdutInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          setSuccessful(true);
+          setTimeout(() => {
+            setSuccessful(false);
+          }, 5000); // Hide the success message after 5 seconds
+          alert("Added Product Successfully");
+          form.reset();
         }
-        console.log(inputedProdutInfo);
-        fetch("http://localhost:5000/usersProducts",{
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(inputedProdutInfo),
-        })
-        .then((res)=> res.json())
-        .then(data => {
-          console.log(data);
-          if(data.insertedId){
-            alert("Added Product Successfully");
-            setSuccessful(true);
+      });
+  };
 
-          }
-        })
-
-
-    
-    }
-    return (
-        <div>
-            <div className=" hero min-h-screen bg-base-200">
+  return (
+    <div>
+      <div className=" hero min-h-screen bg-base-200">
         <div className=" ">
           <div className="text-center pb-8 ">
             <h1 className="text-5xl font-bold">Add a Toy Product</h1>
@@ -145,19 +151,20 @@ const AddedAToy = () => {
                   value="Add A Toy"
                 />
               </div>
+
               <div>
-                {
-                  successful && <p className='text-[#94c120]'>Successfully added a product</p>
-                }
-                
+                {successful ? (
+                  <p className="text-[#94c120] text-center">
+                    Successfully added a product
+                  </p>
+                ) : null}
               </div>
             </form>
-            
           </div>
         </div>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default AddedAToy;
