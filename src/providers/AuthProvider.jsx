@@ -11,6 +11,7 @@ const AuthProvider = ({children}) => {
     const [galleryImage, setGalleryImage] = useState([]);
     const [productsData, setProductsData] = useState([]);
     const [blogData, setBlogData] = useState([]);
+    const [usersProduct, setUsersProduct] = useState([])
 
 
     //for Gallery Image Data
@@ -57,6 +58,30 @@ const AuthProvider = ({children}) => {
         }
         toyProductsData();
     },[])
+
+    //Users Products Data::
+    useEffect(()=>{
+        const usersProduct = async ()=>{
+            try{
+                const res = await fetch("http://localhost:5000/usersProducts")
+                if(!res.ok){
+                    throw new Error ("Network response was not ok")
+                }
+                const usersProduct = await res.json();
+                setUsersProduct(usersProduct);
+                setLoading(false);
+            }
+            catch {
+                error => {
+                    console.log(error);
+                    setLoading(false)
+                }
+            }
+        }
+        usersProduct();
+    },[])
+
+
 
     //Toy Blog Data::
     useEffect(()=>{
@@ -112,6 +137,7 @@ const AuthProvider = ({children}) => {
         galleryImage,
         productsData,
         blogData,
+        usersProduct,
         signIn,
         logOut,
         createUser  

@@ -53,6 +53,18 @@ const Header = () => {
             <li>
               <a
                 className={`text-lg font-bold hover:border-b-2 hover:border-[#94c120] ${
+                  location.pathname === "/add-a-toy"
+                    ? "text-[#94c120]"
+                    : "text-[#393f44]" // Change text color for active and inactive states
+                }`}
+              >
+                <Link to="/add-a-toy">Add a Toy</Link>
+              </a>
+            </li>
+
+            <li>
+              <a
+                className={`text-lg font-bold hover:border-b-2 hover:border-[#94c120] ${
                   location.pathname === "/all-toys"
                     ? "text-[#94c120]"
                     : "text-[#393f44]" // Change text color for active and inactive states
@@ -74,17 +86,7 @@ const Header = () => {
               </a>
             </li>
 
-            <li>
-              <a
-                className={`text-lg font-bold hover:border-b-2 hover:border-[#94c120] ${
-                  location.pathname === "/add-a-toy"
-                    ? "text-[#94c120]"
-                    : "text-[#393f44]" // Change text color for active and inactive states
-                }`}
-              >
-                <Link to="/add-a-toy">Add a Toy</Link>
-              </a>
-            </li>
+           
           </ul>
         </div>
         <div className="navbar-end flex gap-5">
