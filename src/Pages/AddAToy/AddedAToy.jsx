@@ -6,6 +6,17 @@ const AddedAToy = () => {
     const handleAddToy = event => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
+        const category = form.category.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const quantity = form.quantity.value;
+        const description = form.description.value;
+        const photoURL = form.photoURL.value;
+
+        console.log({name, category, price, rating, quantity, description, photoURL});
+
+
     
     }
     return (
@@ -23,7 +34,7 @@ const AddedAToy = () => {
                 </label>
                 <input
                   type="text"
-                  name="userName"
+                  name="name"
                   placeholder="toy name"
                   className="input input-bordered"
                   required
@@ -74,7 +85,7 @@ const AddedAToy = () => {
                 </label>
                 <input
                   type="number"
-                  name="rating"
+                  name="quantity"
                   placeholder="input product rating"
                   className="input input-bordered"
                   required
@@ -83,11 +94,11 @@ const AddedAToy = () => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Rating</span>
+                  <span className="label-text">Description</span>
                 </label>
                 <input
-                  type="number"
-                  name="rating"
+                  type="text"
+                  name="description"
                   placeholder="input product rating"
                   className="input input-bordered"
                   required
