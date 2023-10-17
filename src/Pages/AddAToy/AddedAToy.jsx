@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const AddedAToy = () => {
   const [successful, setSuccessful] = useState(false);
+  const {user} = useContext(AuthContext);
+
+  console.log(user);
 
   const handleAddToy = (event) => {
     event.preventDefault();

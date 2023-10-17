@@ -1,10 +1,15 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useState } from "react";
 
 const Login = () => {
+  const [successful, setSuccessful] =useState(false);
+  const { signIn} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const {signIn} = useContext(AuthContext);
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = event => {
     event.preventDefault();
@@ -13,6 +18,20 @@ const Login = () => {
     const password = form.password.value;
     console.log({email, password});
     signIn(email, password) 
+    .then((result)=> {
+      const user = result.user;
+      console.log(user);
+
+      if(user){
+
+        setSuccessful(true);
+        // setTimeout(()=>{
+        //   setSuccessful(false);
+        // },5000)
+        alert("Successfully Logged In")
+        navigate(from, {replace: true});
+      }
+    })
   }
 
 
@@ -59,6 +78,11 @@ const Login = () => {
               </div>
               <div>
                 <p>haven't account? <Link to='/signUp' className="font-bold text-[#e73529]">Register</Link></p>
+              </div>
+              <div>
+                {
+                  successful ? (<p className="text-center text-[#94c120]">Successfully Logged In</p>): null
+                }
               </div>
             </form>
           </div>
