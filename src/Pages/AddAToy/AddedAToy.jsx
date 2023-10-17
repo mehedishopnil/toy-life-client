@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const AddedAToy = () => {
   const [successful, setSuccessful] = useState(false);
@@ -145,6 +144,12 @@ const AddedAToy = () => {
                   type="submit"
                   value="Add A Toy"
                 />
+              </div>
+              <div>
+                {
+                  successful && <p className='text-[#94c120]'>Successfully added a product</p>
+                }
+                
               </div>
             </form>
             
