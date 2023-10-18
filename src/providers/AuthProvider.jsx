@@ -1,5 +1,5 @@
 import  { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut} from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile} from "firebase/auth";
 import app from '../FirebseConfig/firebase-config'
 
 export const AuthContext = createContext();
@@ -13,7 +13,7 @@ const AuthProvider = ({children}) => {
     const [blogData, setBlogData] = useState([]);
     const [usersProduct, setUsersProduct] = useState([]);
 
-    console.log(user);
+    
     //for Gallery Image Data
     useEffect(()=>{
         const galleryImageData = async () =>{
@@ -120,9 +120,29 @@ const AuthProvider = ({children}) => {
     }
 
     //create user::
-    const createUser = (email, password) => {
+    const createUser = (email, password, displayName, photoURL) => {
         return createUserWithEmailAndPassword(auth, email, password)
+        .then(result =>{
+            const user = result.user;
+
+            return updateProfile(user, {
+                displayName: displayName,
+                photoURL: photoURL,
+            })
+            .then(()=>{
+                return user;
+            })
+            .catch(error =>{
+                console.log(error);
+                return user;
+            })
+            .catch(error=>{
+                console.log(error);
+            })
+        })
+        
     }
+    console.log(user);
 
     //Create a function to set the user data::
     const setUserData = (userData) =>{

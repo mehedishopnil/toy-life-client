@@ -4,7 +4,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 const AddedAToy = () => {
   const [successful, setSuccessful] = useState(false);
   const {user} = useContext(AuthContext);
-
+  const {displayName, email} = user;
   console.log(user);
 
   const handleAddToy = (event) => {
@@ -19,6 +19,8 @@ const AddedAToy = () => {
     const photoURL = form.photoURL.value;
 
     const inputedProdutInfo = {
+      displayName,
+      email,
       name,
       category,
       price,
