@@ -11,9 +11,9 @@ const AuthProvider = ({children}) => {
     const [galleryImage, setGalleryImage] = useState([]);
     const [productsData, setProductsData] = useState([]);
     const [blogData, setBlogData] = useState([]);
-    const [usersProduct, setUsersProduct] = useState([])
+    const [usersProduct, setUsersProduct] = useState([]);
 
-
+    console.log(user);
     //for Gallery Image Data
     useEffect(()=>{
         const galleryImageData = async () =>{
@@ -124,12 +124,28 @@ const AuthProvider = ({children}) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    //Create a function to set the user data::
+    const setUserData = (userData) =>{
+        setUser({
+            displayName: userData.displayName,
+            email: userData.email,
+            photoURL: userData.photoURL,
+        });
+    }
+
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, currentUser =>{
-            setUser (currentUser);
-            console.log('current user in auth provider', currentUser);
+            
+            if(currentUser){
+                setUserData(currentUser);
+            }
+            else{
+                setUser(null);
+            }
+            setLoading(false);
         })
-    })
+        return unsubscribe;
+    },[]);
 
     const authInfo = {
         user,

@@ -9,13 +9,13 @@ const SignUp = () => {
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.userName.value;
+    const displayName= form.displayName.value;
     const email = form.email.value;
     const password = form.password.value;
     const photoURL = form.photoURL.value;
-    console.log({ name, email, password, photoURL });
+    console.log({ displayName, email, password, photoURL });
 
-    createUser(email, password, name, photoURL)
+    createUser(email, password)
     .then((result)=>  {
       const user = result.user;
       console.log(user);
@@ -45,7 +45,7 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
-                  name="userName"
+                  name="displayName"
                   placeholder="your name"
                   className="input input-bordered"
                   required
