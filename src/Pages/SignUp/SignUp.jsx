@@ -1,40 +1,38 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
-  const[successful, setServices] = useState(true)
-  const {createUser} = useContext(AuthContext)
+  const { createUser } = useContext(AuthContext);
 
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
-    const displayName= form.displayName.value;
+    const displayName = form.displayName.value;
     const email = form.email.value;
     const password = form.password.value;
     const photoURL = form.photoURL.value;
-    console.log({ displayName, email, password, photoURL });
 
-    createUser(email, password)
-    .then((result)=>  {
-      const user = result.user;
-      console.log(user);
+    console.log({ displayName, email, photoURL });
 
-      if(user){
-        alert('Congratulation: You are a Member of ToyLife');
-        setServices(true);
+    createUser(email, password, displayName, photoURL)
+      .then((user) => {
+        // Handle successful sign-up here
+        alert("Congratulations: You are a Member of ToyLife");
+
         form.reset();
-      }
-    })
-    .catch((error) => console.log(error));
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error during sign-up:", error);
+      });
   };
-
 
   return (
     <div>
-      <div className=" hero min-h-screen bg-base-200">
-        <div className=" ">
-          <div className="text-center pb-8 ">
+      <div className="hero min-h-screen bg-base-200">
+        <div className="">
+          <div className="text-center pb-8">
             <h1 className="text-5xl font-bold">Register now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-md xl:w-[400px] shadow-2xl bg-base-100">
@@ -84,9 +82,8 @@ const SignUp = () => {
                 <input
                   type="text"
                   name="photoURL"
-                  placeholder="input your photo url"
+                  placeholder="input your photo URL"
                   className="input input-bordered"
-                  required
                 />
               </div>
 
@@ -99,15 +96,14 @@ const SignUp = () => {
               </div>
 
               <div>
-              <p>
-                Already have an account?{" "}
-                <Link to="/logIn" className="font-bold text-[#e73529]">
-                  LogIn
-                </Link>
-              </p>
-            </div>
+                <p>
+                  Already have an account?{" "}
+                  <Link to="/logIn" className="font-bold text-[#e73529]">
+                    Log In
+                  </Link>
+                </p>
+              </div>
             </form>
-            
           </div>
         </div>
       </div>
