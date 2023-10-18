@@ -4,9 +4,9 @@ import { AuthContext } from '../../providers/AuthProvider';
 const AllToys = () => {
     const {usersProduct} = useContext(AuthContext)
     return (
-        <div className='container mx-auto'>
-            <div>
-
+        <div className='container mx-auto my-10'>
+            <div className='py-5'>
+                <h1 className='text-4xl text-center font-bold'>All Inputted Toys Data</h1>
             </div>
 
             <div>
@@ -18,6 +18,9 @@ const AllToys = () => {
           </th>
           <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
             Toy Name
+          </th>
+          <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+            Email
           </th>
           <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
             Sub-category
@@ -38,16 +41,19 @@ const AllToys = () => {
               {toy.seller || 'N/A'}
             </td>
             <td className="px-6 py-4 whitespace-no-wrap">
-              {toy.toyName}
+              {toy.name}
             </td>
             <td className="px-6 py-4 whitespace-no-wrap">
-              {toy.subCategory}
+              {toy.email}
+            </td>
+            <td className="px-6 py-4 whitespace-no-wrap">
+              {toy.category}
             </td>
             <td className="px-6 py-4 whitespace-no-wrap">
               {toy.price}
             </td>
             <td className="px-6 py-4 whitespace-no-wrap">
-              {toy.availableQuantity}
+              {toy.quantity}
             </td>
             <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
               <button className="text-indigo-600 hover:text-indigo-900">
