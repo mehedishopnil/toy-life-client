@@ -142,7 +142,6 @@ const AuthProvider = ({children}) => {
         })
         
     }
-    console.log(user);
 
     //Create a function to set the user data::
     const setUserData = (userData) =>{

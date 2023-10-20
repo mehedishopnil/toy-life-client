@@ -6,7 +6,7 @@ import AuthProvider from "./providers/AuthProvider";
 import router from "./Routs/Rrouts";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div className="mx-auto bg-[#fef7e5]">
+  <div className="mx-auto ">
     <React.StrictMode>
       <AuthProvider>
         <RouterProvider router={router} />
