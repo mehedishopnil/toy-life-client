@@ -3,7 +3,6 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const AllToys = () => {
   const { usersProduct } = useContext(AuthContext);
-  console.log(usersProduct);
   return (
     <div className="container mx-auto my-10">
       <div className="py-5">

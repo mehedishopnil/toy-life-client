@@ -6,8 +6,6 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const location = useLocation();
 
-  console.log(user);
-
   const handleLogout = () => {
     logOut()
       .then(() => {})

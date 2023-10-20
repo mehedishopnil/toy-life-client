@@ -1,14 +1,34 @@
-import  { useContext, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddedAToy = () => {
+  
   const [successful, setSuccessful] = useState(false);
   const {user} = useContext(AuthContext);
-  const {displayName, email} = user;
-  console.log(user);
+  // const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [fromLocation, setFromLocation] = useState(location.state?.from);
+
+
+
+    useEffect(() => {
+      if (!fromLocation) {
+        setFromLocation(location.state?.from);
+      }
+    }, [location.state?.from, fromLocation]);
+    
+  // const {displayName, email} = user;
 
   const handleAddToy = (event) => {
     event.preventDefault();
+    if (!user) {
+      // Redirect to login page if the user is not authenticated
+      navigate("/login");
+      return;
+    }
+    
     const form = event.target;
     const name = form.name.value;
     const category = form.category.value;
@@ -17,10 +37,13 @@ const AddedAToy = () => {
     const quantity = form.quantity.value;
     const description = form.description.value;
     const photoURL = form.photoURL.value;
+    const displayName = user.displayName;
+    const email = user.email;
 
     const inputedProdutInfo = {
       displayName,
       email,
+      
       name,
       category,
       price,
@@ -49,16 +72,18 @@ const AddedAToy = () => {
           form.reset();
         }
       });
+       // Redirect back to the previous page upon success
+       navigate(fromLocation || "/");
   };
 
   return (
     <div>
-      <div className=" hero min-h-screen bg-base-200">
-        <div className=" ">
+      <div className=" hero min-h-screen py-10 bg-base-200">
+        <div className="">
           <div className="text-center pb-8 ">
-            <h1 className="text-5xl font-bold">Add a Toy Product</h1>
+            <h1 className="text-4xl font-bold">Add a Toy Product</h1>
           </div>
-          <div className="card flex-shrink-0 w-full max-w-md xl:w-[400px] shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 w-full max-w-md xl:w-[400px] shadow-xl bg-base-100">
             <form onSubmit={handleAddToy} className="card-body">
               <div className="form-control">
                 <label className="label">
