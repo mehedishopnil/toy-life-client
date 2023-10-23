@@ -14,20 +14,20 @@ const AddedAToy = () => {
 
 
     useEffect(() => {
-      if (!fromLocation) {
-        setFromLocation(location.state?.from);
+      if (!user) {
+        // Redirect to login page if the user is not authenticated
+        navigate("/login");
+        return;
       }
-    }, [location.state?.from, fromLocation]);
+      if (!fromLocation) {
+        setFromLocation(location.state?.from?.pathname || "/");
+      }
+    }, [location.state?.from,user, navigate, fromLocation]);
     
-  // const {displayName, email} = user;
 
   const handleAddToy = (event) => {
     event.preventDefault();
-    if (!user) {
-      // Redirect to login page if the user is not authenticated
-      navigate("/login");
-      return;
-    }
+    
     
     const form = event.target;
     const name = form.name.value;

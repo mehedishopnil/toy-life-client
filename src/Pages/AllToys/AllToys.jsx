@@ -16,6 +16,9 @@ const AllToys = () => {
           <thead>
             <tr>
               <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                Image
+              </th>
+              <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                 Seller
               </th>
               <th className="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -40,6 +43,9 @@ const AllToys = () => {
           <tbody className="bg-white divide-y divide-gray-200">
             {usersProduct.map((toy, index) => (
               <tr key={index}>
+                <td className="px-6 py-4 whitespace-no-wrap">
+                  <img className="w-20" src={toy.photoURL || "N/A"} alt="" />
+                </td>
                 <td className="px-6 py-4 whitespace-no-wrap">
                   {toy.displayName || "N/A"}
                 </td>
