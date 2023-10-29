@@ -20,12 +20,13 @@ const SignUp = () => {
         // Handle successful sign-up here
         alert("Congratulations: You are a Member of ToyLife");
 
-        form.reset();
+        
       })
       .catch((error) => {
         // Handle errors
         console.error("Error during sign-up:", error);
       });
+      form.reset();
   };
 
   return (
