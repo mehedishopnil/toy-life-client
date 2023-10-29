@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const AllToys = () => {
   const { usersProduct } = useContext(AuthContext);
+  console.log(usersProduct);
   return (
     <div className="container mx-auto my-10">
       <div className="py-5">
@@ -55,7 +56,7 @@ const AllToys = () => {
                 <td className="px-6 py-4 whitespace-no-wrap">{toy.price}</td>
                 <td className="px-6 py-4 whitespace-no-wrap">{toy.quantity}</td>
                 <td className="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                  <button className="text-indigo-600 hover:text-indigo-900">
+                  <button className=" text-[#495b18] py-2 px-2 rounded bg-[#ddf89a] hover:text-indigo-900 hover:bg-[#d0f27b]">
                     View Details
                   </button>
                 </td>
